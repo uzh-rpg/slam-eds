@@ -1,0 +1,18 @@
+<package>
+  <description brief="Event-based Sparse Odometry">
+  Events-based Sparse Odometry. Direct approach using events and frames
+  </description>
+  <author>Javier Hidalgo-Carrió/havyhidalgo@gmail.com</author>
+  <license> GPL v3 or higher (see LICENSE file)</license>
+  <url>https://rpg.ifi.uzh.ch/eds</url>
+  <depend package="base/cmake" />
+  <depend package="base/types" />
+  <depend package="base/logging" />
+  <depend package="perception/frame_helper" />
+  <depend package="slam/ceres_solver" />
+  <depend package="slam/pcl" />
+  <depend package="opencv" />
+  <depend package="yaml-cpp"/>
+  <!-- needs_opt for RelWithDebInfo  stable for Release, debug for Debug and stable for Release-->
+  <tags>needs_opt</tags>
+</package>

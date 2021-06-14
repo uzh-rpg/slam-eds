@@ -1,0 +1,12 @@
+build
+tags
+*.sw?
+Doxyfile
+*.pc
+*.orig
+CMakeFiles
+CMakeCache.txt
+*.kdev4
+*.*~
+patches-*-stamp
+.vscode
