@@ -1,0 +1,62 @@
+---
+ data_loader:
+  num_events: 20000
+  overlap: 0.0
+
+ tracker:
+  type: 'ceres'
+  percent_points: 10.0 #percentage of image points to track
+  loss_function:
+    type: "Huber"
+    param: [1.0]
+  options:
+    solver_type: 'DENSE_QR'
+    num_threads: 4
+    max_num_iterations: [100]
+    function_tolerance: 1.0e-06
+    minimizer_progress_to_stdout: True
+
+ mapping:
+    min_depth: 1.0
+    max_depth: 2.0
+    convergence_sigma2_thresh: 100
+    z_dim: 100
+    median_pool:
+      active: True
+      kernel_size: 3
+    sor:
+      active: True
+      nb_points: 6
+      radius: 0.05
+
+ bundles:
+  type: 'ceres'
+  percent_points: 10.0 #percentage of all points in windows to use
+  percent_marginalize_vis: 5.0  #percent of visual point to seletc the kf to marginalize
+  window_size: 3 #sliding window 
+  loss_function:
+    type: "Huber"
+    param: [1.0]
+  options:
+    solver_type: 'SPARSE_SCHUR'
+    num_threads: 8
+    max_num_iterations: 100
+    function_tolerance: 1.0e-05
+    minimizer_progress_to_stdout: True
+
+ recorder:
+  output_folder: '/tmp/out_ceres_eds'
+  filename:
+    poses: 'poses.txt'
+    velos: 'velocities.txt'
+  visual:
+    level: 0
+    save_every_n_samples: 1 # save data every n samples. default: n =1
+    model: True
+    events: True
+    depth: True
+    flow: True
+    sigma: True
+    weights: True
+    dsi: True
+    map: True
